@@ -1,0 +1,134 @@
+Use Cases:
+	1. Login
+	2. Logout
+	3. View Data
+	4. Generate Reports
+	5. Manage Employees
+	6. Manage Departments
+-------------------------------------------------------
+1. - Use Case: "Login"
+   - Actors: 
+   	 	- Primary actor(s)  : Admin, Manager, Employee
+   	 	- Secondary actor(s): Database System.
+   - Description   : This use case involves verifying user credentials to access the system.
+   - Preconditions : User must have valid credentials (user-name & password).
+   - Triggers      : User entered his/her user-name & password and attempted to access the system.
+   - Main Flow:
+      1. User opens the login page.
+      2. Enters user-name and password.
+      3. System verifies credentials.
+      4. If valid, user is redirected to his/her own dashboard.
+   - Alternative Flows:
+      - Invalid Credentials: Displays an error message and prompts for re-entry valid credentials.
+      - Forgot Password    : User is redirected to the password recovery page.
+   - Postconditions: User is directed to their specific dashboard on the system.
+   - Assumptions   : User has the authority to access the system and the database didn't flag an error.
+   - Exceptions    : System displays an error if authentication service is down or there is a technical issue.
+ 
+2. - Use Case: "Logout"
+   - Actors: 
+   	 	- Primary actor(s)  : Admin, Manager, Employee
+   	 	- Secondary actor(s): ?
+   - Description   : This use case involves leaving the system or ending the current session.
+   - Preconditions : User is logged in already.
+   - Triggers      : User clicks on "Logout" button.
+   - Main Flow:
+      1. User clicks on "Logout" button.
+      2. User clicks on "Yes" button to acknowledge the logout. 
+      3. The system redirect his/her to the login page.
+   - Alternative Flows: The user clicks on "Cancel" button and the action will not be executed.
+   - Postconditions   : User is redirected to the login page.
+   - Assumptions      : Network is up and the system is fully functioning.
+   - Exceptions       : Network was down or the system was shutdown because of technical issue.
+
+
+3. Use Case: "View data"
+   - Actor:
+   		- Primary Actor(s)  : Admin, Manager, Employee.
+   		- Secondary Actor(s): Database system.
+   - Description  : This use case involves retrieving data based on who is sending the request and the privileges.
+   - Preconditions: User is logged in and has the privileges.
+   - Main Flow:
+   	  1. User click on "Print Data" button.
+   	  2. Based on the privileges:
+   	  	 - If it's a manger, he/she will see "Private Data" and "Team Data" buttons:
+   	  	   If the manager clicked on "Private Data", his/her own data will be printed
+   	  	   or the other button, "Team Data", The data of the team will be printed.
+   	     - Or if it's an employee, he/she will see "Private Data" button to print his/her own data.
+   	     - Finally, if it's The admin, he/she will be able to see all the data on the system.
+      2. Then his/her data is printed.
+   - Postconditions   : Get the requested data printed on the screen.
+   - Alternative Flows: ?
+   - Exceptions:
+     1. The data is not available in the database.
+     2. A technical issue has occurred.
+
+
+4. Use Case: "Generate Reports"
+    - Actor: Admin
+    - Description: Allows the Admin to generate and view
+     			   reports about employee performance, attendance, or payroll.
+    - Preconditions:
+       1. The user is logged in.
+       2. The user has appropriate permissions to view reports.
+    - Main Flow:
+       1. The Admin or Manager navigates to the "Reports" section.
+       2. The user selects the type of report (e.g. Attendance, Payroll).
+       3. The system retrieves the necessary data from the database.
+       4. The system generates and displays the report.
+    - Postconditions:
+       The requested report is displayed or generated.
+    - Alternative Flows:
+       1. No Data Available:
+             If there is no data available for the selected report type or invalid department, the system
+             displays a message indicating no data is found.
+    Exceptions:
+       1. Database Error:
+             If the system cannot retrieve data due to a database error,
+              the system displays an error message and cancels the operation.
+
+
+5. Use Case: "Manage Employees"
+    - Actor: Admin, Manager
+    - Description: The Admin can add new employee to the system, update existing employee details,
+     			       delete one, and view employee information.
+    			   The manager can assign tasks to the team members.
+    - Preconditions:
+        1. [Admin, manager] is logged in and has access to the system.
+        2. [Admin, manager] has the necessary permissions to manage employee data.
+    - Main Flow:
+        1. The Admin opens the "Manage Employees" page.
+        2. The Admin selects an option: Create, Update, Delete, or View Employee.
+	       - For Create:
+	            1. The Admin fills in the new employee’s details.
+	            2. The system validates the input.
+	            3. The system saves the new employee to the database.
+	       - For Update:
+	            1. The Admin selects an employee to update.
+	            2. The Admin modifies the employee’s details.
+	            3. The system validates the updated details and saves them to the database.
+	       - For Delete:
+	            1. The Admin selects an employee to delete.
+	            2. The system prompts for confirmation.
+	            3. Upon confirmation, the system deletes the employee from the database.
+	       - For View:
+	            1. The Admin selects an employee to view.
+	            2. The system retrieves the employee’s information and displays it.
+    - Postconditions:
+        1. Employee records are created, updated, deleted, or viewed as requested by the admin,
+            or the task is assigned or removed as requested by the manager.
+        2. The changes are saved in the database.
+    - Alternative Flows:
+        1. Invalid Input:
+            If any required fields are missing or incorrectly filled in during creation or update,
+            the system displays an error and prompts the admin to correct the input.
+        2. Employee Not Found:
+            If the Admin tries to update, delete or retrieve an employee that does not exist,
+             the system displays an error message.
+    - Exceptions:
+        1. Database Error:
+            If the system encounters an issue saving or retrieving employee data,
+             an error message is displayed, and the process is halted.
+
+
+6. Use Case: "Manage Departments" ??????
