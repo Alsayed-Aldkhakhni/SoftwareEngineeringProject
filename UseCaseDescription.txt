@@ -1,3 +1,6 @@
+Date: October 24, 2024
+Subj: Use case description file.
+------------------------------------------------------
 Use Cases:
 	1. Login
 	2. Logout
@@ -64,30 +67,6 @@ Use Cases:
      2. A technical issue has occurred.
 
 
-4. Use Case: "Generate Reports"
-    - Actor: Admin
-    - Description: Allows the Admin to generate and view
-     			   reports about employee performance, attendance, or payroll.
-    - Preconditions:
-       1. The user is logged in.
-       2. The user has appropriate permissions to view reports.
-    - Main Flow:
-       1. The Admin or Manager navigates to the "Reports" section.
-       2. The user selects the type of report (e.g. Attendance, Payroll).
-       3. The system retrieves the necessary data from the database.
-       4. The system generates and displays the report.
-    - Postconditions:
-       The requested report is displayed or generated.
-    - Alternative Flows:
-       1. No Data Available:
-             If there is no data available for the selected report type or invalid department, the system
-             displays a message indicating no data is found.
-    Exceptions:
-       1. Database Error:
-             If the system cannot retrieve data due to a database error,
-              the system displays an error message and cancels the operation.
-
-
 5. Use Case: "Manage Employees"
     - Actor: Admin, Manager
     - Description: The Admin can add new employee to the system, update existing employee details,
@@ -131,4 +110,68 @@ Use Cases:
              an error message is displayed, and the process is halted.
 
 
-6. Use Case: "Manage Departments" ??????
+6. Use Case: "Manage Departments"
+    - Actor: Admin
+    - Description: The Admin can add new department to the system, update existing department details,
+     			       delete one, and view the existing.
+    - Preconditions:
+        1. Admin is logged in and has access to the system.
+        2. Admin has the necessary permissions to manage departments.
+    - Main Flow:
+        1. The Admin opens the "Manage Departments" page.
+        2. The Admin selects an option: Create, Update, Delete, or View Department.
+	       - For Create:
+	            1. The Admin fills in the new department’s details [name, working track]
+	            2. The system validates the input.
+	            3. The system saves the new department to the database.
+	       - For Update:
+	            1. The Admin selects a department to update.
+	            2. The Admin modifies the department’s details.
+	            3. The system validates the updated details and saves them to the database.
+	       - For Delete:
+	            1. The Admin selects a department to delete.
+	            2. The system prompts for confirmation.
+	            3. Upon confirmation, the system deletes the department from the database.
+	       - For View:
+	            1. The Admin selects a department to view.
+	            2. The system retrieves the department’s information and displays it.
+    - Postconditions:
+        1. Department is created, updated, deleted, or viewed as requested by the admin.
+        2. The changes are saved in the database.
+    - Alternative Flows:
+        1. Invalid Input:
+            If any required data are missing or incorrectly filled in during creation or update,
+            the system displays an error and prompts the admin to correct the input.
+        2. Department Not Found:
+            If the Admin tries to update, delete or retrieve an employee that does not exist,
+             the system displays an error message.
+    - Exceptions:
+        1. Database Error:
+            If the system encounters an issue saving or retrieving department data,
+             an error message is displayed, and the process is halted.
+
+
+4. Use Case: "Generate Reports"
+    - Actor: Admin
+    - Description: Allows the Admin to generate and view
+     			   reports about employee performance, attendance, or payroll.
+    - Preconditions:
+       1. The user is logged in.
+       2. The user has appropriate permissions to view reports.
+    - Main Flow:
+       1. The Admin or Manager navigates to the "Reports" section.
+       2. The user selects the type of report (e.g. Attendance, Payroll).
+       3. The system retrieves the necessary data from the database.
+       4. The system generates and displays the report.
+    - Postconditions:
+       The requested report is displayed or generated.
+    - Alternative Flows:
+       1. No Data Available:
+             If there is no data available for the selected report type or invalid department, the system
+             displays a message indicating no data is found.
+    Exceptions:
+       1. Database Error:
+             If the system cannot retrieve data due to a database error,
+              the system displays an error message and cancels the operation.
+
+
